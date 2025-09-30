@@ -1,0 +1,70 @@
+# Ignore node modules
+node_modules/
+node_modules
+
+# Ignore package-lock variations
+package-lock.json
+yarn.lock
+
+# Ignore test reports and artifacts
+reports/screenshots/*
+reports/videos/*
+reports/test-report.html
+reports/*.json
+reports/*.xml
+test-results/
+coverage/
+.nyc_output/
+
+# Ignore environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Ignore OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# Ignore logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Ignore playwright browsers and cache
+/ms-playwright/
+/.playwright/
+playwright-report/
+blob-report/
+
+# Ignore temporary files
+*.tmp
+*.temp
+*.log
+.cache/
+
+# Ignore build artifacts
+dist/
+build/
+out/
+
+# Keep empty directories
+!reports/screenshots/.gitkeep
+!reports/videos/.gitkeep
+

@@ -1,0 +1,48 @@
+{
+  "name": "orangehrm-automation",
+  "version": "1.0.0",
+  "description": "OrangeHRM automation tests using Playwright and Jest",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:smoke": "jest --testNamePattern='Smoke Test'",
+    "test:regression": "jest --testNamePattern='Regression'",
+    "test:chrome": "BROWSER=chromium jest",
+    "test:firefox": "BROWSER=firefox jest",
+    "test:webkit": "BROWSER=webkit jest",
+    "test:parallel": "jest --maxWorkers=4",
+    "test:headed": "HEADED=true jest",
+    "test:report": "jest --reporters=default --reporters=jest-html-reporter",
+    "install-browsers": "npx playwright install"
+  },
+  "keywords": ["automation", "playwright", "jest", "orangehrm"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "jest": "^29.7.0",
+    "jest-playwright-preset": "^3.0.1",
+    "dotenv": "^16.3.1",
+    "jest-html-reporter": "^3.10.2",
+    "allure-jest": "^2.0.0",
+    "playwright": "^1.40.0"
+  },
+  "jest": {
+    "preset": "jest-playwright-preset",
+    "testMatch": ["**/tests/**/*.test.js"],
+    "setupFilesAfterEnv": ["<rootDir>/config/jest.setup.js"],
+    "testTimeout": 30000,
+    "reporters": [
+      "default",
+      [
+        "jest-html-reporter",
+        {
+          "outputPath": "./reports/test-report.html",
+          "pageTitle": "OrangeHRM Test Report",
+          "includeFailureMsg": true,
+          "includeSuiteFailure": true
+        }
+      ]
+    ]
+  }
+}
