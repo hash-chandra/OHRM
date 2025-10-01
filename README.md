@@ -6,27 +6,27 @@ This project contains automated tests for the OrangeHRM demo application using J
 
 ```
 ├── config/
-│   ├── jest.setup.js          # Jest configuration and global setup
-│   └── testData.js             # Test data and selectors
+│   ├── jest.setup.js          # Jest configuration and global Playwright/Jest setup
+│   └── testData.js            # Test data and selectors
 ├── pages/
-│   ├── LoginPage.js            # Login page object model
-│   ├── DashboardPage.js        # Dashboard page object model
-│   ├── PersonalDetailsPage.js  # Personal details page object model
-│   ├── ContactDetailsPage.js   # Contact details page object model
+│   ├── LoginPage.js           # Login page object model
+│   ├── DashboardPage.js       # Dashboard page object model
+│   ├── PersonalDetailsPage.js # Personal details page object model
+│   ├── ContactDetailsPage.js  # Contact details page object model
 │   └── EmergencyContactsPage.js # Emergency contacts page object model
 ├── tests/
-│   ├── login.test.js           # Login functionality tests
+│   ├── login.test.js          # Login functionality tests (uses fresh context/page per test)
 │   ├── personalDetails.test.js # Personal details tests
-│   ├── contactDetails.test.js  # Contact details tests
+│   ├── contactDetails.test.js # Contact details tests
 │   ├── emergencyContacts.test.js # Emergency contacts tests
-│   ├── nonFunctional.test.js   # Cross-browser, performance, responsive tests
-│   └── smokeTest.test.js       # Smoke test suite
+│   ├── nonFunctional.test.js  # Cross-browser, performance, responsive tests
+│   └── smokeTest.test.js      # Smoke test suite
 ├── utils/
-│   └── testUtils.js            # Utility functions for tests
+│   └── testUtils.js           # Utility functions for tests
 ├── reports/
-│   ├── screenshots/            # Test failure screenshots
-│   └── videos/                 # Test execution videos
-├── package.json                # Project dependencies and scripts
+│   ├── screenshots/           # Test failure screenshots
+│   └── videos/                # (Optional) Test execution videos
+├── package.json               # Project dependencies and scripts
 ├── .env.example               # Environment variables template
 └── README.md                  # This file
 ```
@@ -65,7 +65,7 @@ Create a `.env` file based on `.env.example` and configure:
 - `TEST_USERNAME`: Valid username (default: Admin)
 - `TEST_PASSWORD`: Valid password (default: admin123)
 - `BROWSER`: Browser to use (chromium, firefox, webkit)
-- `HEADED`: Run in headed mode (true/false)
+- `HEADED`: Run in headed mode (`1` for headed, unset or `0` for headless)
 
 ### Test Data
 
@@ -110,7 +110,7 @@ npm run test:parallel
 
 ### Headed Mode (with browser UI)
 ```bash
-npm run test:headed
+HEADED=1 npm test
 ```
 
 ### With HTML Report
@@ -179,7 +179,7 @@ HTML reports are generated automatically in `./reports/test-report.html`
 Screenshots are captured on test failures in `./reports/screenshots/`
 
 ### Videos
-Test execution videos are saved in `./reports/videos/`
+Test execution videos are saved in `./reports/videos/` (if enabled in Playwright context)
 
 ## Test Data Management
 
@@ -245,7 +245,7 @@ Check the following for debugging:
 
 ## Best Practices
 
-1. **Test Independence**: Each test should be independent and not rely on other tests
+1. **Test Independence**: Each test runs in a fresh browser context and page for isolation
 2. **Page Object Model**: Use POM for maintainable code
 3. **Wait Strategies**: Use appropriate wait strategies for dynamic content
 4. **Test Data**: Use unique test data to avoid conflicts
