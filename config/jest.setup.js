@@ -32,7 +32,8 @@ beforeAll(async () => {
   
   page = await context.newPage();
   
-  // Make page available globally
+  // Make browser, page, and context available globally
+  global.browser = browser;
   global.page = page;
   global.context = context;
 });
