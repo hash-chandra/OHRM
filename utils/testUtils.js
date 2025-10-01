@@ -1,5 +1,35 @@
 class TestUtils {
   /**
+   * Take screenshot with timestamp and test name
+   * @param {Object} page - Playwright page object
+   * @param {string} testName - Test name for screenshot filename
+   */
+  static async takeScreenshotOnFailure(page, testName) {
+    const timestamp = this.getCurrentTimestamp();
+    const filename = `./reports/screenshots/${testName.replace(/\s+/g, '_')}_${timestamp}.png`;
+    if (page && page.screenshot) {
+      try {
+        await page.screenshot({ path: filename, fullPage: true });
+      } catch (e) {
+        // Ignore screenshot errors
+      }
+    }
+  }
+
+  /**
+   * Wait for selector to appear
+   * @param {Object} page - Playwright page object
+   * @param {string} selector - Selector to wait for
+   * @param {number} timeout - Timeout in ms
+   */
+  static async waitForSelector(page, selector, timeout = 2000) {
+    try {
+      await page.waitForSelector(selector, { timeout });
+    } catch (e) {
+      // Ignore timeout errors
+    }
+  }
+  /**
    * Generate random string for test data
    * @param {number} length - Length of random string
    * @returns {string} Random string

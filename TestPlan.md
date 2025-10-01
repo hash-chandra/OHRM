@@ -3,7 +3,7 @@
 ## Overview
 This test plan covers the automation of core functionalities in OrangeHRM demo application including Login, Personal Details validation, Contact Details updates and Emergency Contacts management. The test cases will validate positive scenarios, negative scenarios, edge cases and non-functional aspects using JavaScript, Playwright and Jest framework.
 
-## Links
+## Links 
 **Application URL:** https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
 
 ## Setup

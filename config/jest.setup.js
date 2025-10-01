@@ -44,10 +44,18 @@ afterAll(async () => {
 
 // Screenshot on test failure
 afterEach(async () => {
-  if (global.page && expect.getState().currentTestName) {
-    const testName = expect.getState().currentTestName.replace(/[^a-zA-Z0-9]/g, '_');
+  const testState = expect.getState && expect.getState();
+  if (
+    global.page &&
+    testState &&
+    testState.currentTestName &&
+    (
+      testState.status === 'failed' ||
+      (Array.isArray(testState.assertions) && testState.assertions.some(a => a.status === 'failed'))
+    )
+  ) {
+    const testName = testState.currentTestName.replace(/[^a-zA-Z0-9]/g, '_');
     const screenshotPath = `./reports/screenshots/${testName}_${Date.now()}.png`;
-    
     try {
       await global.page.screenshot({ 
         path: screenshotPath, 
