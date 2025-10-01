@@ -20,19 +20,6 @@ describe('Login Tests', () => {
   });
 
   afterEach(async () => {
-    // Take screenshot only if test failed
-    if (expect.getState && expect.getState().currentTestName && expect.getState().testPath) {
-      const testState = expect.getState();
-      // Prefer status property if available
-      if (testState.status === 'failed') {
-        await TestUtils.takeScreenshotOnFailure(page, testState.currentTestName);
-      } else if (
-        Array.isArray(testState.assertions) &&
-        testState.assertions.some(a => a.status === 'failed')
-      ) {
-        await TestUtils.takeScreenshotOnFailure(page, testState.currentTestName);
-      }
-    }
     // Close page and browser after each test
     if (page && page.close) {
       try {
