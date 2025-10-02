@@ -32,9 +32,17 @@ module.exports = {
     homePhone: '+1-555-987-6543',
     mobile: '+1-555-987-6544'
   },
+
+  VALID_EMERGENCY_CONTACT_2: {
+    name: 'John Smith',
+    relationship: 'Brother',
+    homePhone: '+1-555-111-2222',
+    mobile: '+1-555-111-2223'
+  },
   
   // Invalid test data
   INVALID_PHONE_NUMBERS: ['123', 'abcdefg', '555-CALL'],
+  INVALID_PHONE_ALPHABETS: 'abcdefghij',
   INVALID_ZIP_CODES: ['ABCDE', '123', '1234567890'],
   
   // Timeouts
@@ -57,37 +65,57 @@ module.exports = {
       DASHBOARD_HEADER: '.oxd-topbar-header-breadcrumb h6'
     },
     NAVIGATION: {
-      MY_INFO_MENU: 'text=My Info',
+      MY_INFO_MENU: 'a[href="/web/index.php/pim/viewMyDetails"]',
       PERSONAL_DETAILS_TAB: 'text=Personal Details',
       CONTACT_DETAILS_TAB: 'text=Contact Details',
       EMERGENCY_CONTACTS_TAB: 'text=Emergency Contacts'
     },
+    MY_INFO: {
+      PAGE_HEADER: '.oxd-topbar-header-breadcrumb h6',
+      SIDEBAR_MENU: '.orangehrm-tabs-wrapper'
+    },
     PERSONAL_DETAILS: {
       FIRST_NAME: 'input[name="firstName"]',
+      MIDDLE_NAME: 'input[name="middleName"]',
       LAST_NAME: 'input[name="lastName"]',
+      EMPLOYEE_ID: '.oxd-input--active',
       SAVE_BUTTON: 'button[type="submit"]',
-      SUCCESS_MESSAGE: '.oxd-toast-content-text'
+      SUCCESS_MESSAGE: '.oxd-toast-content--success',
+      ERROR_MESSAGE: '.oxd-input-field-error-message'
     },
     CONTACT_DETAILS: {
-      STREET1: 'input[placeholder="Street 1"]',
-      STREET2: 'input[placeholder="Street 2"]',
-      CITY: 'input[placeholder="City"]',
-      STATE: 'input[placeholder="State/Province"]',
-      ZIP: 'input[placeholder="Zip/Postal Code"]',
+      STREET1: '.oxd-input',
+      STREET2: '.oxd-input',
+      CITY: '.oxd-input',
+      STATE: '.oxd-input',
+      ZIP: '.oxd-input',
       COUNTRY: '.oxd-select-text-input',
-      HOME_PHONE: 'input[placeholder="Home"]',
-      MOBILE_PHONE: 'input[placeholder="Mobile"]',
-      WORK_PHONE: 'input[placeholder="Work"]',
-      SAVE_BUTTON: 'button[type="submit"]'
+      HOME_PHONE: '.oxd-input',
+      MOBILE_PHONE: '.oxd-input',
+      WORK_PHONE: '.oxd-input',
+      WORK_EMAIL: '.oxd-input',
+      OTHER_EMAIL: '.oxd-input',
+      SAVE_BUTTON: 'button[type="submit"]',
+      SUCCESS_MESSAGE: '.oxd-toast-content--success',
+      ERROR_MESSAGE: '.oxd-input-field-error-message'
     },
     EMERGENCY_CONTACTS: {
       ADD_BUTTON: 'button:has-text("Add")',
-      NAME_INPUT: 'input[placeholder="Name"]',
-      RELATIONSHIP_INPUT: 'input[placeholder="Relationship"]',
-      HOME_PHONE_INPUT: 'input[placeholder="Home Telephone"]',
-      MOBILE_INPUT: 'input[placeholder="Mobile"]',
+      NAME_INPUT: '.oxd-input',
+      RELATIONSHIP_INPUT: '.oxd-input',
+      HOME_PHONE_INPUT: '.oxd-input',
+      MOBILE_INPUT: '.oxd-input',
+      WORK_PHONE_INPUT: '.oxd-input',
       SAVE_BUTTON: 'button[type="submit"]',
-      CONTACT_LIST: '.oxd-table-body'
+      CANCEL_BUTTON: 'button:has-text("Cancel")',
+      SUCCESS_MESSAGE: '.oxd-toast-content--success',
+      ERROR_MESSAGE: '.oxd-input-field-error-message',
+      CONTACT_LIST: '.oxd-table-body',
+      CONTACT_ROW: '.oxd-table-row',
+      CONTACT_CELL: '.oxd-table-cell',
+      DELETE_BUTTON: 'button.oxd-icon-button:has(i.bi-trash)',
+      CONFIRM_DELETE_BUTTON: 'button.oxd-button--label-danger',
+      NO_RECORDS_FOUND: '.oxd-table-card >> text=No Records Found'
     }
   }
 };

@@ -12,7 +12,11 @@
   "test:webkit": "BROWSER=webkit HEADED=1 jest",
   "test:parallel": "jest --maxWorkers=4",
   "test:headed": "HEADED=1 jest",
-  "test:report": "jest --reporters=default --reporters=jest-html-reporter",
+  "test:report": "test -f ./reports/test-report.html && open ./reports/test-report.html || (echo 'No report found. Generating new report...' && jest && open ./reports/test-report.html)",
+  "test:login": "jest login.test.js",
+  "test:personal": "jest personalDetails.test.js",
+  "test:contact": "jest contactDetails.test.js",
+  "test:emergency": "jest emergencyContacts.test.js",
   "install-browsers": "npx playwright install"
   },
   "keywords": ["automation", "playwright", "jest", "orangehrm"],

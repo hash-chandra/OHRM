@@ -24,10 +24,10 @@ beforeAll(async () => {
   context = await browser.newContext({
     viewport: { width: 1920, height: 1080 },
     ignoreHTTPSErrors: true,
-    recordVideo: {
-      dir: './reports/videos/',
-      size: { width: 1920, height: 1080 }
-    }
+    // recordVideo: {
+    //   dir: './reports/videos/',
+    //   size: { width: 1920, height: 1080 }
+    // }
   });
   
   page = await context.newPage();
